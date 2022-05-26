@@ -58,22 +58,18 @@ public class PlayerController : MonoBehaviour
     {
         float moveSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
-        if(Input.GetKey(KeyCode.D))
+        Vector3 moveVelocity = Vector3.zero;
+
+        if(Input.GetAxis("Horizontal") != 0)
         {
-            body.AddForce(transform.forward * moveSpeed);
+            moveVelocity += transform.forward * moveSpeed * Input.GetAxis("Horizontal");
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetAxis("Vertical") != 0)
         {
-            body.AddForce(-transform.forward * moveSpeed);
+            moveVelocity += -transform.right * moveSpeed * Input.GetAxis("Vertical");
         }
-        if (Input.GetKey(KeyCode.W))
-        {
-            body.AddForce(-transform.right * moveSpeed);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            body.AddForce(transform.right * moveSpeed);
-        }
+
+        body.velocity = moveVelocity;
     }
 
 }
