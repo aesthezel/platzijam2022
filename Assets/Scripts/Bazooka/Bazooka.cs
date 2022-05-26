@@ -27,6 +27,11 @@ public class Bazooka : MonoBehaviour
         canImpulse = true;
     }
 
+    private void Update()
+    {
+        Shoot();
+    }
+
     public void Reload()
     {
         currentAmmoQuantity = maxAmmo;
@@ -34,17 +39,20 @@ public class Bazooka : MonoBehaviour
 
     public void Shoot()
     {
+        if(Input.GetMouseButton(0))
+        {
+            currentAmmoQuantity -= 1;
 
-        currentAmmoQuantity -= 1;
+            if (!canShoot) return;
 
-        if (!canShoot) return;
+            StartCoroutine(ShootDelay(shootDelay));
 
-        StartCoroutine(ShootDelay(shootDelay));
+            var bullet = Instantiate(ammoType, this.transform);
+            bullet.transform.position = barrelExitPoint.position;
+            bullet.transform.rotation = barrelExitPoint.rotation;
+            bullet.transform.parent = null;
+        }
 
-        var bullet = Instantiate(ammoType,this.transform);
-        bullet.transform.position = barrelExitPoint.position;
-        bullet.transform.rotation = barrelExitPoint.rotation;
-        bullet.transform.parent = null;
     }
 
     public void Impulse()

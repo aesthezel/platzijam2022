@@ -1218,6 +1218,7 @@ MonoBehaviour:
   groundCheckDistance: 1
   walkSpeed: 10
   runSpeed: 30
+  cameraSensitivity: 10
 --- !u!65 &1403261714
 BoxCollider:
   m_ObjectHideFlags: 0

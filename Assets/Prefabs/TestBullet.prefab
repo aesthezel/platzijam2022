@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageRange: 20
-  ammoSpeed: 10
+  ammoSpeed: 20
