@@ -58,6 +58,15 @@ public class PlayerController : MonoBehaviour
     {
         float moveSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = runSpeed;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+        }
+
         Vector3 moveVelocity = Vector3.zero;
 
         if(Input.GetAxis("Horizontal") != 0)
@@ -69,7 +78,7 @@ public class PlayerController : MonoBehaviour
             moveVelocity += -transform.right * moveSpeed * Input.GetAxis("Vertical");
         }
 
-        body.velocity = moveVelocity;
+        body.velocity = new Vector3(moveVelocity.x,body.velocity.y, moveVelocity.z);
     }
 
 }
