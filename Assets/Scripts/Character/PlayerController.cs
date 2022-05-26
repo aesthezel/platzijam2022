@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float groundCheckDistance;
 
+    [SerializeField] float walkSpeed;
+    [SerializeField] float runSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         Fall();
         Jump();
+        Move();
     }
 
     void Fall()
@@ -43,10 +47,33 @@ public class PlayerController : MonoBehaviour
             body.AddForce(new Vector3(0f, jumpSpeed));
         }
 
-        
+
     }
 
-    bool IsGrounded(){
+    bool IsGrounded() {
         return Physics.Raycast(transform.position, -Vector3.up, groundCheckDistance);
     }
+
+    void Move()
+    {
+        float moveSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+
+        if(Input.GetKey(KeyCode.D))
+        {
+            body.AddForce(transform.forward * moveSpeed);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            body.AddForce(-transform.forward * moveSpeed);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            body.AddForce(-transform.right * moveSpeed);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            body.AddForce(transform.right * moveSpeed);
+        }
+    }
+
 }
