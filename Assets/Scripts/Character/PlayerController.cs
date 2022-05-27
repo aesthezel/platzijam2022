@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         Fall();
         Jump();
         Move();
+        RotateCamera();
     }
 
     void Fall()
@@ -80,5 +81,33 @@ public class PlayerController : MonoBehaviour
 
         body.velocity = new Vector3(moveVelocity.x,body.velocity.y, moveVelocity.z);
     }
+
+    float pitch;
+    float yaw;
+    [SerializeField] public float rotationSpeed;
+
+    public void RotateCamera()
+    {
+        pitch += rotationSpeed * Input.GetAxis("Mouse Y");
+        yaw += rotationSpeed * Input.GetAxis("Mouse X");
+
+        // Clamp pitch:
+        pitch = Mathf.Clamp(pitch, -90f, 90f);
+
+        // Wrap yaw:
+        while (yaw < 0f)
+        {
+            yaw += 360f;
+        }
+        while (yaw >= 360f)
+        {
+            yaw -= 360f;
+        }
+
+        // Set orientation:
+        transform.eulerAngles = new Vector3(0f, yaw, - pitch);
+    }
+
+
 
 }
