@@ -30,17 +30,22 @@ public class Bazooka : MonoBehaviour
     private void Update()
     {
         Shoot();
+        Reload();
     }
 
     public void Reload()
     {
-        currentAmmoQuantity = maxAmmo;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentAmmoQuantity = maxAmmo;
+        }
     }
 
     public void Shoot()
     {
         if(Input.GetMouseButton(0))
         {
+            if (currentAmmoQuantity <= 0) return; 
             currentAmmoQuantity -= 1;
 
             if (!canShoot) return;
