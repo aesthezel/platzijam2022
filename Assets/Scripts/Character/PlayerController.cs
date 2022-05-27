@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     //[SerializeField] private float gravity;
     [SerializeField] private float jumpSpeed;
-    private Rigidbody body;
+    [SerializeField] private Rigidbody rigidBody;
 
     [SerializeField] float groundCheckDistance;
 
@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        body = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour
         Fall();
         Jump();
         Move();
-        RotateCamera();
     }
 
     void Fall()
@@ -46,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            body.AddForce(new Vector3(0f, jumpSpeed));
+            rigidBody.AddForce(new Vector3(0f, jumpSpeed));
         }
 
 
@@ -73,42 +71,13 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetAxis("Horizontal") != 0)
         {
-            moveVelocity += transform.forward * moveSpeed * Input.GetAxis("Horizontal");
+            moveVelocity += transform.right* moveSpeed * Input.GetAxis("Horizontal");
         }
         if (Input.GetAxis("Vertical") != 0)
         {
-            moveVelocity += -transform.right * moveSpeed * Input.GetAxis("Vertical");
+            moveVelocity += transform.forward * moveSpeed * Input.GetAxis("Vertical");
         }
 
-        body.velocity = new Vector3(moveVelocity.x,body.velocity.y, moveVelocity.z);
+        rigidBody.velocity = new Vector3(moveVelocity.x,rigidBody.velocity.y, moveVelocity.z);
     }
-
-    float pitch;
-    float yaw;
-    [SerializeField] public float rotationSpeed;
-
-    public void RotateCamera()
-    {
-        pitch += rotationSpeed * Input.GetAxis("Mouse Y");
-        yaw += rotationSpeed * Input.GetAxis("Mouse X");
-
-        // Clamp pitch:
-        pitch = Mathf.Clamp(pitch, -90f, 90f);
-
-        // Wrap yaw:
-        while (yaw < 0f)
-        {
-            yaw += 360f;
-        }
-        while (yaw >= 360f)
-        {
-            yaw -= 360f;
-        }
-
-        // Set orientation:
-        transform.eulerAngles = new Vector3(0f, yaw, - pitch);
-    }
-
-
-
 }
