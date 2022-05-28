@@ -72,4 +72,5 @@ public class PlayerController : MonoBehaviour
 
         rigidBody.velocity = new Vector3(moveVelocity.x,rigidBody.velocity.y, moveVelocity.z);
     }
+
 }

@@ -81,7 +81,9 @@ public class Bazooka : MonoBehaviour
 
     public void Impulse()
     {
-        body.AddExplosionForce(1000f, ExplosionPoint.transform.position, 10f);
+        body.velocity = Vector3.zero;
+        Vector3 force = -ExplosionPoint.transform.forward.normalized * ImpulseForce;
+        body.AddForce(force, ForceMode.VelocityChange);
 
     }
 
