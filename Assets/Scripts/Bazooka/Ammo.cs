@@ -21,7 +21,7 @@ public abstract class Ammo : MonoBehaviour
 
     public void Move()
     {
-        transform.Translate(this.transform.right * ammoSpeed * Time.deltaTime);   
+        transform.Translate(this.transform.up * ammoSpeed * Time.deltaTime,Space.World);   
     }
 
     public abstract void ExplosionFX();

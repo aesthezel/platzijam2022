@@ -17,41 +17,74 @@ public class Bazooka : MonoBehaviour
 
     bool canImpulse;
 
+    [SerializeField] private Rigidbody body;
+
     [SerializeField] Transform barrelExitPoint;
 
+    [SerializeField] public float ImpulseForce;
+
+    [SerializeField] Camera cam;
+
+    [SerializeField] GameObject Freddy;
+
+    [SerializeField] GameObject ExplosionPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         canShoot = true;
         canImpulse = true;
+        currentAmmoQuantity = maxAmmo;
+    }
+
+    private void Update()
+    {
+        Shoot();
+        //Impulse();
+        Reload();
+        if (Input.GetMouseButtonDown(1))
+        {
+            Impulse();
+        }
     }
 
     public void Reload()
     {
-        currentAmmoQuantity = maxAmmo;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentAmmoQuantity = maxAmmo;
+        }
     }
 
     public void Shoot()
     {
+        if(Input.GetMouseButton(0))
+        {
+            if (currentAmmoQuantity <= 0) return; 
+            currentAmmoQuantity -= 1;
 
-        currentAmmoQuantity -= 1;
+            if (!canShoot)
+            {
+                return;
+            }
 
-        if (!canShoot) return;
+            StartCoroutine(ShootDelay(shootDelay));
 
-        StartCoroutine(ShootDelay(shootDelay));
+            var bullet = Instantiate(ammoType, this.transform);
 
-        var bullet = Instantiate(ammoType,this.transform);
-        bullet.transform.position = barrelExitPoint.position;
-        bullet.transform.rotation = barrelExitPoint.rotation;
-        bullet.transform.parent = null;
+            bullet.transform.position = barrelExitPoint.position;
+            bullet.transform.rotation = barrelExitPoint.rotation;
+            bullet.transform.parent = null;
+        }
+
     }
 
     public void Impulse()
     {
-        if (!canImpulse) return;
+        body.velocity = Vector3.zero;
+        Vector3 force = -ExplosionPoint.transform.forward.normalized * ImpulseForce;
+        body.AddForce(force, ForceMode.VelocityChange);
 
-        StartCoroutine(ShootDelay(impulseDelay));
     }
 
     IEnumerator ShootDelay(float time)
