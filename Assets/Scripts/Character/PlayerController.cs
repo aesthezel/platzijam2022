@@ -24,8 +24,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Fall();
-        Jump();
+        //Jump();
         Move();
+        if (Input.GetKeyDown("space") && IsGrounded())
+        {
+            rigidBody.AddForce(new Vector3(0f, jumpSpeed));
+        }
     }
 
     void Fall()
@@ -35,19 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            gameObject.transform.Translate(this.transform.up * jumpSpeed * Time.deltaTime);
-        }
-        */
-
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
-        {
-            rigidBody.AddForce(new Vector3(0f, jumpSpeed));
-        }
-
-
+        rigidBody.AddForce(new Vector3(0f, jumpSpeed));
     }
 
     bool IsGrounded() {

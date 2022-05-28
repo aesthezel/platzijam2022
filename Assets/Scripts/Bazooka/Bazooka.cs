@@ -17,20 +17,35 @@ public class Bazooka : MonoBehaviour
 
     bool canImpulse;
 
+    [SerializeField] private Rigidbody body;
+
     [SerializeField] Transform barrelExitPoint;
 
+    [SerializeField] public float ImpulseForce;
+
+    [SerializeField] Camera cam;
+
+    [SerializeField] GameObject Freddy;
+
+    [SerializeField] GameObject ExplosionPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         canShoot = true;
         canImpulse = true;
+        currentAmmoQuantity = maxAmmo;
     }
 
     private void Update()
     {
         Shoot();
+        //Impulse();
         Reload();
+        if (Input.GetMouseButtonDown(1))
+        {
+            Impulse();
+        }
     }
 
     public void Reload()
@@ -48,11 +63,15 @@ public class Bazooka : MonoBehaviour
             if (currentAmmoQuantity <= 0) return; 
             currentAmmoQuantity -= 1;
 
-            if (!canShoot) return;
+            if (!canShoot)
+            {
+                return;
+            }
 
             StartCoroutine(ShootDelay(shootDelay));
 
             var bullet = Instantiate(ammoType, this.transform);
+
             bullet.transform.position = barrelExitPoint.position;
             bullet.transform.rotation = barrelExitPoint.rotation;
             bullet.transform.parent = null;
@@ -62,9 +81,8 @@ public class Bazooka : MonoBehaviour
 
     public void Impulse()
     {
-        if (!canImpulse) return;
+        body.AddExplosionForce(1000f, ExplosionPoint.transform.position, 10f);
 
-        StartCoroutine(ShootDelay(impulseDelay));
     }
 
     IEnumerator ShootDelay(float time)
