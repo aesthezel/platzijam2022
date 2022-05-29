@@ -29,6 +29,11 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void LoadHistory()
+    {
+        SceneManager.LoadScene("History1");
+    }
+
     public void LoadGame()
     {
         SceneManager.LoadScene("SampleScene");

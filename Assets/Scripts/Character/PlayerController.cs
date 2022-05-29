@@ -15,9 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float walkSpeed;
     [SerializeField] float runSpeed;
 
+    [SerializeField] public GameObject Freddier;
+
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -31,7 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.AddForce(new Vector3(0f, jumpSpeed));
         }
-        //if (this.transform.position.y < 100) Application.LoadLevel(Application.loadedLevel);
+        if (this.transform.position.y < -100) Freddier.transform.position = new Vector3(11.83f, 8.598f, 12.55f);
     }
 
     void Fall()

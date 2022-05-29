@@ -334,7 +334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2654, y: 160}
+  m_AnchoredPosition: {x: 2.2654, y: 124.5}
   m_SizeDelta: {x: 262.0034, y: 43.1802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &750095177
@@ -383,7 +383,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 959742165}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: LoadGame
+        m_MethodName: LoadHistory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1069,7 +1069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2654, y: 88}
+  m_AnchoredPosition: {x: 2.2654, y: 69.5}
   m_SizeDelta: {x: 262.0034, y: 43.1802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903265921
