@@ -284,6 +284,7 @@ MonoBehaviour:
   ExplosionPoint: {fileID: 1253293473}
   audioManager: {fileID: 1325904828}
   bazookaSound: {fileID: 8300000, guid: 2c72327ed7e4daa4db70d74d4063e617, type: 3}
+  BOOOOOOM: {fileID: 7741230564936521548, guid: 8e9c6397b745fe845aad593fd17d49ee, type: 3}
 --- !u!23 &624690977
 MeshRenderer:
   m_ObjectHideFlags: 0

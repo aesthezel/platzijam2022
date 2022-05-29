@@ -33,6 +33,8 @@ public class Bazooka : MonoBehaviour
 
     [SerializeField] AudioClip bazookaSound;
 
+    [SerializeField] GameObject BOOOOOOM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +113,8 @@ public class Bazooka : MonoBehaviour
     void ImpulseFX()
     {
         audioManager.SFXSource.PlayOneShot(bazookaSound);
+        GameObject bum = Instantiate(BOOOOOOM,barrelExitPoint);
+        Destroy(bum, 2);
     }
 
 }

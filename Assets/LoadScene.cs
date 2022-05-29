@@ -16,4 +16,9 @@ public class LoadScene : MonoBehaviour
     {
         
     }
+
+    LoadScene()
+    {
+
+    }
 }
