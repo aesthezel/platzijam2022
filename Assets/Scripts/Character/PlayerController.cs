@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         float moveSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift) && IsGrounded())
         {
             moveSpeed = runSpeed;
         }
