@@ -63,10 +63,7 @@ public class Bazooka : MonoBehaviour
 
     public void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            currImpulseQuantity = maxImpulseQuantity;
-        }
+        currImpulseQuantity = maxImpulseQuantity;
     }
 
     /*
