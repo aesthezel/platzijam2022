@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.AddForce(new Vector3(0f, jumpSpeed));
         }
+        //if (this.transform.position.y < 100) Application.LoadLevel(Application.loadedLevel);
     }
 
     void Fall()
