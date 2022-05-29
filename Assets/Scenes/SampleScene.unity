@@ -278,7 +278,7 @@ MonoBehaviour:
   ammoType: {fileID: 4564656202691851090, guid: 7bd6e5d875a9b08438a4c80737498a31, type: 3}
   body: {fileID: 844810728}
   barrelExitPoint: {fileID: 1243977393}
-  ImpulseForce: 10
+  ImpulseForce: 15
   cam: {fileID: 963194227}
   Freddy: {fileID: 0}
   ExplosionPoint: {fileID: 1253293473}
