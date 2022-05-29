@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 
 	public AudioSource MusicSource;
 
+	public AudioSource SFXSource;
+
 	public static AudioManager Instance = null;
 
 	[SerializeField] private List<AudioClip> musicSources = new List<AudioClip>();

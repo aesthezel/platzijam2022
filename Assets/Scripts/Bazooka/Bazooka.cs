@@ -29,6 +29,10 @@ public class Bazooka : MonoBehaviour
 
     [SerializeField] GameObject ExplosionPoint;
 
+    [SerializeField] AudioManager audioManager;
+
+    [SerializeField] AudioClip bazookaSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +43,10 @@ public class Bazooka : MonoBehaviour
 
     private void Update()
     {
-        Shoot();
+        //Shoot();
         //Impulse();
         Reload();
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             Impulse();
         }
@@ -56,6 +60,7 @@ public class Bazooka : MonoBehaviour
         }
     }
 
+    /*
     public void Shoot()
     {
         if(Input.GetMouseButton(0))
@@ -78,12 +83,14 @@ public class Bazooka : MonoBehaviour
         }
 
     }
+    */
 
     public void Impulse()
     {
         body.velocity = Vector3.zero;
         Vector3 force = -ExplosionPoint.transform.forward.normalized * ImpulseForce;
         body.AddForce(force, ForceMode.VelocityChange);
+        ImpulseFX();
 
     }
 
@@ -101,14 +108,9 @@ public class Bazooka : MonoBehaviour
         canImpulse = true;
     }
 
-    void ShootFX()
-    {
-
-    }
-
     void ImpulseFX()
     {
-
+        audioManager.SFXSource.PlayOneShot(bazookaSound);
     }
 
 }
