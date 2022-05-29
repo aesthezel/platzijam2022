@@ -276,7 +276,9 @@ MonoBehaviour:
   shootDelay: 1
   impulseDelay: 1
   ammoType: {fileID: 4564656202691851090, guid: 7bd6e5d875a9b08438a4c80737498a31, type: 3}
+  maxImpulseQuantity: 2
   body: {fileID: 844810728}
+  bodyLogic: {fileID: 1360749065}
   barrelExitPoint: {fileID: 1243977393}
   ImpulseForce: 15
   cam: {fileID: 963194227}

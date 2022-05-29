@@ -13,11 +13,17 @@ public class Bazooka : MonoBehaviour
     [SerializeField] private float impulseDelay;
     [SerializeField] private Ammo ammoType;
 
+    [SerializeField] public int maxImpulseQuantity;
+    private int currImpulseQuantity;
+    
+
     bool canShoot;
 
     bool canImpulse;
 
     [SerializeField] private Rigidbody body;
+
+    [SerializeField] private PlayerController bodyLogic;
 
     [SerializeField] Transform barrelExitPoint;
 
@@ -40,16 +46,17 @@ public class Bazooka : MonoBehaviour
     {
         canShoot = true;
         canImpulse = true;
-        currentAmmoQuantity = maxAmmo;
+        currImpulseQuantity = maxImpulseQuantity;
     }
 
     private void Update()
     {
         //Shoot();
         //Impulse();
-        Reload();
-        if (Input.GetMouseButtonDown(0))
+        if(bodyLogic.IsGrounded())Reload();
+        if (Input.GetMouseButtonDown(0) && currImpulseQuantity > 0)
         {
+            currImpulseQuantity -= 1;
             Impulse();
         }
     }
@@ -58,7 +65,7 @@ public class Bazooka : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            currentAmmoQuantity = maxAmmo;
+            currImpulseQuantity = maxImpulseQuantity;
         }
     }
 
