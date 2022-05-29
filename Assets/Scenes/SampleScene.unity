@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 844810725}
   rb: {fileID: 1821538292}
-  moveForce: 1
+  moveForce: 3
 --- !u!65 &1821538288
 BoxCollider:
   m_ObjectHideFlags: 0
