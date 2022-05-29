@@ -14,11 +14,45 @@ public class LoadScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+           SceneManager.LoadScene("MainMenu");
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
-    LoadScene()
+    public void LoadMainMenu()
     {
+        SceneManager.LoadScene("MainMenu");
+    }
 
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void LoadOptionsMenu()
+    {
+        SceneManager.LoadScene("OptionsWindow");
+    }
+
+    public void LoadControls()
+    {
+        SceneManager.LoadScene("ControlsWindow");
+    }
+
+    public void LoadVolume()
+    {
+        SceneManager.LoadScene("VolumeWindow");
+    }
+
+
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 }
