@@ -114,7 +114,7 @@ public class Bazooka : MonoBehaviour
     {
         audioManager.SFXSource.PlayOneShot(bazookaSound);
         GameObject bum = Instantiate(BOOOOOOM,barrelExitPoint);
-        Destroy(bum, 2);
+        Destroy(bum, 0.5f);
     }
 
 }
